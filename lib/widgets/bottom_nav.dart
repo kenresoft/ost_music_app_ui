@@ -1,4 +1,4 @@
-import 'package:bottom_nav/bottom_navigation.dart';
+import 'package:bottom_nav/bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
