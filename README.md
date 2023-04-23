@@ -4,11 +4,11 @@ A Music Application Flutter project with easy navigation and saves last played m
 
 ## Screenshots
 
-<img src="screenshots/Screenshot_20230418-004007.jpg" width="300" height="600" title="screenshot 1" alt="Discover Page"/>
-<img src="screenshots/Screenshot_20230418-004018.jpg" width="300" height="600" title="screenshot 2" alt="Library Page"/>
-<img src="screenshots/Screenshot_20230418-004027.jpg" width="300" height="600" title="screenshot 3" alt="Now Playing Page"/>
-<img src="screenshots/Screenshot_20230418-004046.jpg" width="300" height="600" title="screenshot 3" alt="Now Playing (paused) Page"/>
-<img src="screenshots/Screenshot_20230418-004059.jpg" width="300" height="600" title="screenshot 5" alt="Playlist Page"/>
+<img src="screenshots/Screenshot_20230418-004007.jpg" width="300" height="650" title="screenshot 1" alt="Discover Page"/>
+<img src="screenshots/Screenshot_20230418-004018.jpg" width="300" height="650" title="screenshot 2" alt="Library Page"/>
+<img src="screenshots/Screenshot_20230418-004027.jpg" width="300" height="650" title="screenshot 3" alt="Now Playing Page"/>
+<img src="screenshots/Screenshot_20230418-004046.jpg" width="300" height="650" title="screenshot 3" alt="Now Playing (paused) Page"/>
+<img src="screenshots/Screenshot_20230418-004059.jpg" width="300" height="650" title="screenshot 5" alt="Playlist Page"/>
 <img src="screenshots/screen-20230418-003928.gif" width="300" height="600" title="Screencast" alt="Gif preview"/>
 
 
