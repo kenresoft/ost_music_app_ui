@@ -7,20 +7,12 @@ enum NavPage {
 }
 
 extension PageExtension on NavPage {
-  int get page {
-    switch (this) {
-      case NavPage.discover:
-        return 0;
-      case NavPage.library:
-        return 1;
-      case NavPage.nowPlaying:
-        return 2;
-      case NavPage.store:
-        return 3;
-      case NavPage.account:
-        return 4;
-      default:
-        return 0;
-    }
-  }
+  int get page => switch (this) {
+        NavPage.discover => 0,
+        NavPage.library => 1,
+        NavPage.nowPlaying => 2,
+        NavPage.store => 3,
+        NavPage.account => 4,
+        _ => -1,
+      };
 }

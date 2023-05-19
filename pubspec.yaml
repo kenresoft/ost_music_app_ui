@@ -19,7 +19,7 @@ dependencies:
   fontresoft:
     git:
       url: git@github.com:kenresoft/fontresoft.git
-      ref: master
+      ref: release
   extensionresoft:
     git:
       url: git@github.com:kenresoft/extensionresoft.git

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import '../data/constants/constants.dart';
@@ -26,4 +28,5 @@ class Utils {
         Color(0xff585070),
         Color(0xff595273),
       ]);
+
 }
