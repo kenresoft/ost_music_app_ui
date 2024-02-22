@@ -73,11 +73,11 @@ class _LibraryState extends ConsumerState<Library> {
                     borderRadius: BorderRadius.circular(8),
                     image: const DecorationImage(opacity: 0.2, fit: BoxFit.cover, image: ExactAssetImage(Constants.wave)),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 30.0),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 30.0),
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                       Row(
-                        children: const [
+                        children: [
                           Padding(
                             padding: EdgeInsets.only(right: 12, left: 18),
                             child: Icon(CupertinoIcons.play_circle, color: Colors.black, size: 38),
@@ -85,7 +85,7 @@ class _LibraryState extends ConsumerState<Library> {
                           Text('Slacker Radio', style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold)),
                         ],
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.symmetric(horizontal: 18),
                         child: Icon(CupertinoIcons.music_note_list, color: Colors.black, size: 22),
                       ),

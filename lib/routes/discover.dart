@@ -41,7 +41,7 @@ class _DiscoverState extends ConsumerState<Discover> {
     return Container(
       decoration: BoxDecoration(gradient: Utils.buildGradient()),
       child: DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(

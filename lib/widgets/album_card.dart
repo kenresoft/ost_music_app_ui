@@ -28,7 +28,7 @@ class AlbumCard extends StatelessWidget {
             shadowColor: const Color(0xff866684),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             child: Container(
-              height: 115,
+              height: 110,
               width: Constants.wrapWidth,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
