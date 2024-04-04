@@ -12,8 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-#  bottom_nav:
-#    path: '../../packages/bottom_nav'
+  bottom_nav:
+    path: '../../packages/bottom_nav'
   #    git:
   #      url: git@github.com:kenresoft/bottom_nav.git
   #      ref: master

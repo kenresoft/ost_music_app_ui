@@ -49,6 +49,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  bottom_nav:
+    dependency: "direct main"
+    description:
+      path: "../../packages/bottom_nav"
+      relative: true
+    source: path
+    version: "0.0.1"
   build:
     dependency: transitive
     description:
