@@ -21,10 +21,10 @@ dependencies:
   extensionresoft: ^0.0.3
   cupertino_icons: ^1.0.6
   go_router: ^13.2.0
-  flutter_riverpod: ^2.4.10
+  flutter_riverpod: ^2.5.1
   flutter_screenutil: ^5.9.0
 
-  audioplayers: ^5.2.1
+  just_audio: ^0.9.37
   on_audio_query: ^2.9.0
 
 dev_dependencies:
