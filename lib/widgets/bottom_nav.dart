@@ -33,7 +33,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
       ),
       child: BottomNav(
         divider: Divider(height: 1, color: Colors.white.withOpacity(0.3)),
-        height: 78,
+        height: 88,
         padding: const EdgeInsets.only(bottom: 15, left: 20, right: 20),
         onTap: (index) => buildNavSwitch(index, context, widget.ref),
         iconSize: 26,
