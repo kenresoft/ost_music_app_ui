@@ -8,7 +8,7 @@ import '../providers/providers.dart';
 import '../utils/utils.dart';
 
 class AlbumCard extends StatelessWidget {
-  const AlbumCard({required this.index, Key? key, required this.ref}) : super(key: key);
+  const AlbumCard({required this.index, super.key, required this.ref});
 
   final int index;
   final WidgetRef ref;
