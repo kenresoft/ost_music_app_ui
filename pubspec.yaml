@@ -24,6 +24,9 @@ dependencies:
   flutter_riverpod: ^2.4.10
   flutter_screenutil: ^5.9.0
 
+  audioplayers: ^5.2.1
+  on_audio_query: ^2.9.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
