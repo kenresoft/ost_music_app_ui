@@ -156,7 +156,7 @@ class _LibraryState extends ConsumerState<Library> {
                     itemCount: Constants.albumList.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) {
-                      return AlbumCard(index: index, ref: ref);
+                      return AlbumCard(index: index/*, ref: ref*/);
                     },
                   ),
                 ),
