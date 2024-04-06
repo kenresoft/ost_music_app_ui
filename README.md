@@ -4,12 +4,57 @@ A Music Application Flutter project with easy navigation and saves last played m
 
 ## Screenshots
 
-<img src="screenshots/Screenshot_20230418-004007.jpg" width="225" height="500" title="screenshot 1" alt="Discover Page"/>
-<img src="screenshots/Screenshot_20230418-004018.jpg" width="225" height="500" title="screenshot 2" alt="Library Page"/>
-<img src="screenshots/Screenshot_20230418-004027.jpg" width="225" height="500" title="screenshot 3" alt="Now Playing Page"/>
-<img src="screenshots/Screenshot_20230418-004046.jpg" width="225" height="500" title="screenshot 3" alt="Now Playing (paused) Page"/>
-<img src="screenshots/Screenshot_20230418-004059.jpg" width="225" height="500" title="screenshot 5" alt="Playlist Page"/>
-<img src="screenshots/screen-20230418-003928.gif" width="225" height="500" title="Screencast" alt="Gif preview"/>
+[//]: # (<img src="screenshots/Screenshot_20230418-004007.jpg" width="225" height="500" title="screenshot 1" alt="Discover Page"/>)
+
+[//]: # (<img src="screenshots/Screenshot_20230418-004018.jpg" width="225" height="500" title="screenshot 2" alt="Library Page"/>)
+
+[//]: # (<img src="screenshots/Screenshot_20230418-004027.jpg" width="225" height="500" title="screenshot 3" alt="Now Playing Page"/>)
+
+[//]: # (<img src="screenshots/Screenshot_20230418-004046.jpg" width="225" height="500" title="screenshot 3" alt="Now Playing &#40;paused&#41; Page"/>)
+
+[//]: # (<img src="screenshots/Screenshot_20230418-004059.jpg" width="225" height="500" title="screenshot 5" alt="Playlist Page"/>)
+
+[//]: # (<img src="screenshots/screen-20230418-003928.gif" width="225" height="500" title="Screencast" alt="Gif preview"/>)
+
+
+<table>
+  <tr>
+    <td>
+      <img src="screenshots/Screenshot_20230418-004007.jpg" width="225" height="500" title="screenshot 1" alt="Discover Page"/>
+      <br>
+      Discover Page
+    </td>
+    <td>
+      <img src="screenshots/Screenshot_20230418-004018.jpg" width="225" height="500" title="screenshot 2" alt="Library Page"/>
+      <br>
+      Library Page
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="screenshots/Screenshot_20230418-004027.jpg" width="225" height="500" title="screenshot 3" alt="Now Playing Page"/>
+      <br>
+      Now Playing Page
+    </td>
+    <td>
+      <img src="screenshots/Screenshot_20230418-004046.jpg" width="225" height="500" title="screenshot 4" alt="Now Playing (paused) Page"/>
+      <br>
+      Now Playing (Paused) Page
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="screenshots/Screenshot_20230418-004059.jpg" width="225" height="500" title="screenshot 5" alt="Playlist Page"/>
+      <br>
+      Playlist Page
+    </td>
+    <td>
+      <img src="screenshots/screen-20230418-003928.gif" width="225" height="500" title="Screencast" alt="Gif preview"/>
+      <br>
+      Screencast
+    </td>
+  </tr>
+</table>
 
 
 ## Packages
