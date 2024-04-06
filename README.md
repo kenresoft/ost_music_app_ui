@@ -23,28 +23,19 @@ dependencies:
     git:
       url: git@github.com:kenresoft/bottom_nav.git
       ref: master
-  fontresoft:
-    git:
-      url: git@github.com:kenresoft/fontresoft.git
-      ref: release
-  extensionresoft:
-    git:
-      url: git@github.com:kenresoft/extensionresoft.git
-      ref: master
-  cupertino_icons: ^1.0.5
-  go_router: ^6.5.7
-  flutter_riverpod: ^2.3.4
+      
+  fontresoft: ^0.0.3
+  extensionresoft: ^0.0.3
+  cupertino_icons: ^1.0.6
+  go_router: ^13.2.0
+  flutter_riverpod: ^2.5.1
+  flutter_screenutil: ^5.9.0
+
+  just_audio: ^0.9.37
+  on_audio_query: ^2.9.0
 ```
 
-## Getting Started
+### Attribution
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Design by: [Ayo](https://dribbble.com/ayo58) on [Dribble](https://dribbble.com/shots/3907172-OST-app-2-black)
+Developed by me [kenresoft](.) 
