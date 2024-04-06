@@ -2,6 +2,7 @@ import 'package:bottom_nav/bottom_nav.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ost_music_app_ui/data/models/album.dart';
 
 import '../data/constants/constants.dart';
@@ -32,11 +33,11 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
         splashColor: Colors.transparent,
       ),
       child: BottomNav(
-        divider: Divider(height: 1, color: Colors.white.withOpacity(0.3)),
-        height: 88,
-        padding: const EdgeInsets.only(bottom: 15, left: 20, right: 20),
+        divider: Divider(height: 1.h, color: Colors.white.withOpacity(0.3)),
+        height: 91.5.h,
+        padding: EdgeInsets.only(bottom: 15.h, left: 20.w, right: 20.w),
         onTap: (index) => buildNavSwitch(index, context, widget.ref),
-        iconSize: 26,
+        iconSize: 26.r,
         backgroundColor: const Color(0xff41415f),
         color: const Color(0xff878b9c),
         colorSelected: const Color(0xffe2a5a9),
@@ -50,14 +51,14 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             child: Card(
               color: Colors.white.withAlpha(200),
               elevation: 10,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(180)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(180).r),
               child: Container(
-                margin: const EdgeInsets.all(3),
-                height: 42,
-                width: 42,
+                margin: const EdgeInsets.all(3).r,
+                height: 42.h,
+                width: 42.h,
                 decoration: BoxDecoration(
                   image: DecorationImage(image: ExactAssetImage(album != Album.empty() ? album.image! : Constants.album), fit: BoxFit.cover),
-                  borderRadius: BorderRadius.circular(180),
+                  borderRadius: BorderRadius.circular(180).r,
                 ),
               ),
             ),
