@@ -2,6 +2,8 @@ import 'package:extensionresoft/extensionresoft.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 import '../data/constants/constants.dart';
@@ -21,12 +23,14 @@ class Discover extends ConsumerStatefulWidget {
 class _DiscoverState extends ConsumerState<Discover> {
   final tabs = ['Film Score', 'Music Theatre', 'Video Game Music', 'Stream'];
   final OnAudioQuery _audioQuery = OnAudioQuery();
+  late AudioPlayer audioPlayer;
 
   bool _hasPermission = false;
 
   @override
   void initState() {
     super.initState();
+    audioPlayer = AudioPlayer();
     for (var i = 0; i < Constants.albumList.length; ++i) {
       ExactAssetImage(Constants.albumList[i].image!);
     }
@@ -34,7 +38,7 @@ class _DiscoverState extends ConsumerState<Discover> {
     checkAndRequestPermissions();
   }
 
-  checkAndRequestPermissions({bool retry = false}) async {
+  checkAndRequestPermissions({bool retry = true}) async {
     // The param 'retryRequest' is false, by default.
     _hasPermission = await _audioQuery.checkAndRequest(
       retryRequest: retry,
@@ -50,6 +54,12 @@ class _DiscoverState extends ConsumerState<Discover> {
       precacheImage(Utils.buildExactAssetImage(i), context);
     }
     super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
   }
 
   @override
@@ -74,96 +84,96 @@ class _DiscoverState extends ConsumerState<Discover> {
             bottom: TabBar(
               isScrollable: true,
               indicator: UnderlineTabIndicator(
-                insets: const EdgeInsets.symmetric(horizontal: -8, vertical: 1),
-                borderRadius: BorderRadius.circular(20),
+                insets: EdgeInsets.symmetric(horizontal: -8.w, vertical: 1.h),
+                borderRadius: BorderRadius.circular(20).r,
                 borderSide: const BorderSide(color: Color(0xfffcc8c0), width: 2),
               ),
               dividerColor: Colors.white.withOpacity(0.2),
               labelColor: Colors.white,
               splashFactory: NoSplash.splashFactory,
-              labelStyle: const TextStyle(fontSize: 17),
+              labelStyle: TextStyle(fontSize: 17.h),
               unselectedLabelColor: Colors.white.withOpacity(0.5),
-              tabs: tabs.map((e) => Tab(text: e, height: 25)).toList(),
+              tabs: tabs.map((e) => Tab(text: e, height: 25.h)).toList(),
             ),
           ),
           body: SizedBox(
             width: double.infinity,
             child: SingleChildScrollView(
               child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20).w,
                 child: Center(
                   child: Column(children: [
-                    10.spaceY(),
+                    10.h.spaceY(),
 
                     /// Row 2 --- Big Carousel Slider
                     Card(
                       elevation: 5,
                       shadowColor: const Color(0xff866684),
                       color: Colors.white,
-                      margin: const EdgeInsets.symmetric(vertical: 10),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                      margin: EdgeInsets.symmetric(vertical: 10.h),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8).r),
                       child: Container(
-                        height: 210,
+                        height: 210.h,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8).r,
                           image: const DecorationImage(fit: BoxFit.cover, image: ExactAssetImage(Constants.album)),
                         ),
                       ),
                     ),
-                    20.spaceY(),
+                    20.h.spaceY(),
 
                     /// Row 4 --- New Albums
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 3),
-                            child: CustomPaint(painter: Line()),
+                          Padding(
+                            padding: EdgeInsets.only(top: 3.h),
+                            child: const CustomPaint(painter: Line()),
                           ),
-                          10.spaceX(),
-                          const Text('New Albums', style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
+                          10.w.spaceX(),
+                          Text('New Albums', style: TextStyle(fontSize: 20.h, fontWeight: FontWeight.normal)),
                         ],
                       ),
                       Icon(CupertinoIcons.forward, color: Colors.white.withOpacity(0.6))
                     ]),
 
-                    15.spaceY(),
+                    15.h.spaceY(),
 
                     /// Horizontal List
-                    158.spaceY(
+                    158.h.spaceY(
                       ListView.builder(
                         shrinkWrap: true,
                         itemExtent: 115,
                         itemCount: Constants.albumList.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (_, index) {
-                          return AlbumCard(index: index, ref: ref);
+                          return AlbumCard(index: index/*, ref: ref*/);
                         },
                       ),
                     ),
 
-                    30.spaceY(),
+                    30.h.spaceY(),
 
                     ///Row 5 --- Collection of Artist
                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 3),
-                            child: CustomPaint(painter: Line()),
+                          Padding(
+                            padding: EdgeInsets.only(top: 3.h),
+                            child: const CustomPaint(painter: Line()),
                           ),
-                          10.spaceX(),
+                          10.w.spaceX(),
                           const Text('Recommended Playlist', style: TextStyle(fontSize: 20, fontWeight: FontWeight.normal)),
                         ],
                       ),
                       Icon(CupertinoIcons.forward, color: Colors.white.withOpacity(0.6))
                     ]),
 
-                    20.spaceY(),
+                    20.h.spaceY(),
 
-                    155.spaceY(
+                    300.h.spaceY(
                       !_hasPermission
                           ? noAccessToLibraryWidget()
                           : FutureBuilder<List<SongModel>>(
@@ -195,8 +205,19 @@ class _DiscoverState extends ConsumerState<Discover> {
                                   itemBuilder: (context, index) {
                                     return ListTile(
                                       title: Text(item.data![index].title),
-                                      subtitle: Text(item.data![index].artist ?? "No Artist"),
-                                      trailing: const Icon(Icons.arrow_forward_rounded),
+                                      subtitle: Column(
+                                        children: [
+                                          Text(item.data![index].artist ?? "No Artist"),
+                                        ],
+                                      ),
+                                      trailing: GestureDetector(
+                                        onTap: () {
+                                          audioPlayer.setFilePath(item.data![index].data);
+                                          //audioPlayer.stop();
+                                          audioPlayer.playerState.playing ? audioPlayer.stop() : audioPlayer.play();
+                                        },
+                                        child: const Icon(Icons.arrow_forward_rounded),
+                                      ),
                                       // This Widget will query/load image.
                                       // You can use/create your own widget/method using [queryArtwork].
                                       leading: QueryArtworkWidget(
@@ -211,12 +232,12 @@ class _DiscoverState extends ConsumerState<Discover> {
                             ),
                     ),
 
-                    20.spaceY(),
+                    20.h.spaceY(),
 
-                    /// Horizontal List
-                    155.spaceY(
+                    /// Vertical List
+                    155.h.spaceY(
                       ListView.builder(
-                        shrinkWrap: true,
+                        //shrinkWrap: true,
                         itemCount: Constants.artisteList.length,
                         itemBuilder: (_, index) {
                           return buildArtists(index);
