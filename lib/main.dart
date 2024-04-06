@@ -5,6 +5,7 @@ import 'package:extensionresoft/extensionresoft.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fontresoft/fontresoft.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ost_music_app_ui/providers/providers.dart';
@@ -27,7 +28,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +127,12 @@ finish(BuildContext context) => GoRouter.of(context).pop();
 FutureOr appCallback(void value) {
   runApp(
     ProviderScope(
-      child: MyApp(),
+      child: ScreenUtilInit(
+        designSize: const Size(448, 998),
+        splitScreenMode: true,
+        minTextAdapt: true,
+        child: MyApp(),
+      ),
     ),
   );
 }
