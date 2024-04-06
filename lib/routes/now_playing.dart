@@ -5,7 +5,7 @@ import 'package:extensionresoft/extensionresoft.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ost_music_app_ui/data/constants/constants.dart';
 import 'package:ost_music_app_ui/data/models/album.dart';
 
@@ -46,7 +46,8 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
 
   @override
   void didChangeDependencies() {
-    album = GoRouterState.of(context).extra as Album;
+    //album = GoRouterState.of(context).extra as Album;
+    album = ModalRoute.of(context)!.settings.arguments as Album;
     imageProvider = ExactAssetImage(album.image!);
     precacheImage(imageProvider, context);
     super.didChangeDependencies();
@@ -60,7 +61,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
     var previousSong = currentSong != 0 ? albumList[currentSong - 1] : albumList[limit];
     return Container(
       decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
-      padding: const EdgeInsets.only(top: 56, bottom: 46, right: 20, left: 20),
+      padding: EdgeInsets.only(top: 56.h, bottom: 46.h, right: 36.w, left: 36.w),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaY: 15, sigmaX: 15),
         child: Scaffold(
@@ -73,49 +74,49 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                   GestureDetector(onTap: () => finish(context), child: const Icon(CupertinoIcons.chevron_down, color: Colors.white)),
                   GestureDetector(onTap: () {}, child: const Icon(CupertinoIcons.ellipsis, color: Colors.white)),
                 ]),
-                35.spaceY(),
+                35.h.spaceY(),
 
                 /// Song Title
                 Text(
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                   album.title!,
-                  style: const TextStyle(fontSize: 28, color: Colors.white, fontStyle: FontStyle.normal),
+                  style: TextStyle(fontSize: 28.h, color: Colors.white, fontStyle: FontStyle.normal),
                 ),
                 //const Text('We Need Our Army Back', style: TextStyle(fontSize: 28, color: Colors.white, fontStyle: FontStyle.normal)),
-                10.spaceY(),
+                10.h.spaceY(),
 
                 /// Artist Name
-                Text(album.artiste!.name, style: const TextStyle(fontSize: 16, color: Colors.white)),
+                Text(album.artiste!.name, style: TextStyle(fontSize: 16.h, color: Colors.white)),
                 //const Text('Hans Zimmer', style: TextStyle(fontSize: 16, color: Colors.white)),
-                35.spaceY(),
+                45.h.spaceY(),
 
                 /// Big Card
                 RotationTransition(
                   turns: rotationController,
                   child: Card(
                     color: Colors.white.withAlpha(90),
-                    elevation: 20,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(180)),
+                    elevation: 20.h,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(300).r),
                     child: Container(
-                      margin: const EdgeInsets.all(10),
-                      height: 300,
-                      width: 300,
+                      margin: const EdgeInsets.all(10).r,
+                      height: .77.sw,
+                      width: .77.sw,
                       decoration: BoxDecoration(
                         image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
-                        borderRadius: BorderRadius.circular(180),
+                        borderRadius: BorderRadius.circular(300).r,
                       ),
                     ),
                   ),
                 ),
-                50.spaceY(),
+                60.h.spaceY(),
 
                 /// Song Progress Indicator
                 LinearProgressIndicator(value: controller.value),
-                10.spaceY(),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [
-                  Text('2:49', style: TextStyle(fontSize: 12, color: Colors.white)),
-                  Text('6:28', style: TextStyle(fontSize: 12, color: Colors.white)),
+                10.h.spaceY(),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Text('2:49', style: TextStyle(fontSize: 16.h, color: Colors.white)),
+                  Text('6:28', style: TextStyle(fontSize: 16.h, color: Colors.white)),
                 ]),
 
                 /// Music Control Buttons
@@ -126,7 +127,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                   log('Playing: $isPlay : ${controller.value}');
 
                   return Padding(
-                    padding: const EdgeInsets.all(32.0),
+                    padding: const EdgeInsets.all(42).r.copyWith(left: 64.w, right: 64.w),
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                       GestureDetector(
                         onTap: () {
@@ -136,7 +137,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                           ref.watch(playProvider.notifier).play(true);
                           ref.watch(currentlyPlaying.notifier).current(nextSong);
                         },
-                        child: const Icon(CupertinoIcons.backward_fill, color: Colors.white, size: 35),
+                        child: Icon(CupertinoIcons.backward_fill, color: Colors.white, size: 40.r),
                       ),
                       GestureDetector(
                         onTap: () {
@@ -145,7 +146,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                         child: Icon(
                           isPlay ? CupertinoIcons.pause_fill : CupertinoIcons.play_fill,
                           color: Colors.white,
-                          size: 45,
+                          size: 60.r,
                         ),
                       ),
                       GestureDetector(
@@ -156,13 +157,13 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                           ref.watch(playProvider.notifier).play(true);
                           ref.watch(currentlyPlaying.notifier).current(nextSong);
                         },
-                        child: const Icon(CupertinoIcons.forward_fill, color: Colors.white, size: 35),
+                        child: Icon(CupertinoIcons.forward_fill, color: Colors.white, size: 40.r),
                       ),
                     ]),
                   );
                 }),
 
-                20.spaceY(),
+                20.h.spaceY(),
 
                 /// Last Row
                 Consumer(
@@ -170,21 +171,21 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(CupertinoIcons.repeat, color: Colors.white.withOpacity(0.6)),
+                        Icon(CupertinoIcons.repeat, color: Colors.white.withOpacity(0.6), size: 30.r),
                         GestureDetector(
                           onTap: () {
                             ref.watch(isLiked.notifier).like(!ref.watch(isLiked.select((value) => value)));
                           },
                           child: ref.watch(isLiked.select((value) => value))
-                              ? Icon(CupertinoIcons.heart_fill, color: Colors.white.withOpacity(0.6))
-                              : Icon(
-                                  CupertinoIcons.heart,
-                                  color: Colors.white.withOpacity(0.6),
-                                ),
+                              ? Icon(CupertinoIcons.heart_fill, color: Colors.white.withOpacity(0.6), size: 30.r)
+                              : Icon(CupertinoIcons.heart, color: Colors.white.withOpacity(0.6), size: 30.r),
                         ),
-                        Icon(CupertinoIcons.down_arrow, color: Colors.white.withOpacity(0.6)),
-                        Icon(CupertinoIcons.text_bubble, color: Colors.white.withOpacity(0.6)),
-                        GestureDetector(onTap: () => launchReplace(context, Constants.playlist, album), child: Icon(CupertinoIcons.music_note_list, color: Colors.white.withOpacity(0.6))),
+                        Icon(CupertinoIcons.down_arrow, color: Colors.white.withOpacity(0.6), size: 30.r),
+                        Icon(CupertinoIcons.text_bubble, color: Colors.white.withOpacity(0.6), size: 30.r),
+                        GestureDetector(
+                          onTap: () => launchReplace(context, Constants.playlist, album),
+                          child: Icon(CupertinoIcons.music_note_list, color: Colors.white.withOpacity(0.6), size: 30.r),
+                        ),
                       ],
                     );
                   },
