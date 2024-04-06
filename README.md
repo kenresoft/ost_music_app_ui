@@ -24,10 +24,10 @@ dependencies:
       url: git@github.com:kenresoft/bottom_nav.git
       ref: master
       
-  fontresoft: ^0.0.3
-  extensionresoft: ^0.0.3
+  fontresoft: ^0.0.5
+  extensionresoft: ^0.0.5
   cupertino_icons: ^1.0.6
-  go_router: ^13.2.0
+  go_router: ^13.2.2
   flutter_riverpod: ^2.5.1
   flutter_screenutil: ^5.9.0
 
@@ -37,5 +37,5 @@ dependencies:
 
 ### Attribution
 
-Design by: [Ayo](https://dribbble.com/ayo58) on [Dribble](https://dribbble.com/shots/3907172-OST-app-2-black)
-Developed by me [kenresoft](.) 
+- Design by: [Ayo](https://dribbble.com/ayo58) on [Dribble](https://dribbble.com/shots/3907172-OST-app-2-black)
+- Developed by me [kenresoft](https://github.com/kenresoft) 
