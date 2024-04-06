@@ -38,4 +38,7 @@ dependencies:
 ### Attribution
 
 - Design by: [Ayo](https://dribbble.com/ayo58) on [Dribble](https://dribbble.com/shots/3907172-OST-app-2-black)
-- Developed by me [kenresoft](https://github.com/kenresoft) 
+- Developed by me [kenresoft](https://kenresoft.github.io) 
+
+#### Discover Page Images
+- Image 1: <a href="https://www.freepik.com/free-vector/electro-music-album_3601855.htm#page=2&query=music%20album%20cover%20mockup&position=6&from_view=keyword&track=ais&uuid=26900704-2685-4ffe-acf4-0df3cf331238">Image by rawpixel.com</a> on Freepik
