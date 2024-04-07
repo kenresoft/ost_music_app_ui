@@ -90,9 +90,7 @@ void buildNavSwitch(int index, BuildContext context, WidgetRef ref) {
       break;
     case 2:
       if (cacheTabIndex != 2) {
-        ref.watch(currentlyPlaying.select((value) => value)).title == null
-            ? null
-            : launchReplace(context, Constants.nowPlaying, ref.watch(currentlyPlaying.select((value) => value)));
+        currentSong(ref).title == null ? null : launchReplace(context, Constants.nowPlaying, currentSong(ref));
         ref.watch(tabProvider.notifier).setTab = index;
         //ref.watch(launchProvider.notifier).launch(true);
       }
@@ -110,3 +108,5 @@ void buildNavSwitch(int index, BuildContext context, WidgetRef ref) {
       ref.watch(tabProvider.notifier).setTab = index;
   }
 }
+
+Album currentSong(WidgetRef ref) => ref.watch(currentlyPlaying.select((value) => value));
