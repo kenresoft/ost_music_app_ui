@@ -6,15 +6,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ost_music_app_ui/data/constants/constants.dart';
 import 'package:ost_music_app_ui/data/models/album.dart';
+import 'package:ost_music_app_ui/routes/playlist.dart';
 
 import '../main.dart';
 import '../providers/providers.dart';
 
 class NowPlaying extends StatefulWidget {
-  const NowPlaying({Key? key}) : super(key: key);
+  const NowPlaying({super.key});
 
   @override
   State<NowPlaying> createState() => _NowPlayingState();
@@ -62,7 +62,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
     var previousSong = currentSong != 0 ? albumList[currentSong - 1] : albumList[limit];
 
     return Consumer(builder: (context, ref, child) {
-      ref.watch(currentlyPlaying.notifier).current(album);
+      Future(() => ref.watch(currentlyPlaying.notifier).current(album));
       return Container(
         decoration: BoxDecoration(image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
         padding: EdgeInsets.only(top: 56.h, bottom: 46.h, right: 36.w, left: 36.w),
@@ -75,7 +75,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                 children: [
                   ///ROW 1
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                    GestureDetector(onTap: () => finish(context), child: const Icon(CupertinoIcons.chevron_down, color: Colors.white)),
+                    GestureDetector(onTap: () => /*finish(context)*/ Navigator.pop(context), child: const Icon(CupertinoIcons.chevron_down, color: Colors.white)),
                     GestureDetector(onTap: () {}, child: const Icon(CupertinoIcons.ellipsis, color: Colors.white)),
                   ]),
                   35.h.spaceY(),
@@ -113,7 +113,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  60.h.spaceY(),
+                  50.h.spaceY(),
 
                   /// Song Progress Indicator
                   LinearProgressIndicator(value: controller.value),
@@ -128,7 +128,7 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                     bool isPlay = ref.watch(playProvider.select((value) => value));
                     isPlay ? controller.repeat() : controller.stop(canceled: false);
                     isPlay ? rotationController.repeat() : rotationController.stop(canceled: false);
-                    log('Playing: $isPlay : ${controller.value}');
+                    //log('Playing: $isPlay : ${controller.value}');
 
                     return Padding(
                       padding: const EdgeInsets.all(42).r.copyWith(left: 64.w, right: 64.w),
@@ -156,10 +156,18 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                         GestureDetector(
                           onTap: () {
                             stopControllers();
-                            replace(context, Constants.nowPlaying, nextSong);
+                            //replace(context, Constants.nowPlaying, nextSong);
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const NowPlaying();
+                                }, settings: RouteSettings(name: 'album', arguments: nextSong),
+                              ),
+                            );
                             startControllers();
                             ref.watch(playProvider.notifier).play(true);
-                            ref.watch(currentlyPlaying.notifier).current(nextSong);
+                            //ref.watch(currentlyPlaying.notifier).current(nextSong);
                           },
                           child: Icon(CupertinoIcons.forward_fill, color: Colors.white, size: 40.r),
                         ),
@@ -187,7 +195,17 @@ class _NowPlayingState extends State<NowPlaying> with TickerProviderStateMixin {
                           Icon(CupertinoIcons.down_arrow, color: Colors.white.withOpacity(0.6), size: 30.r),
                           Icon(CupertinoIcons.text_bubble, color: Colors.white.withOpacity(0.6), size: 30.r),
                           GestureDetector(
-                            onTap: () => launchReplace(context, Constants.playlist, album),
+                            //onTap: () => launchReplace(context, Constants.playlist, album),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const Playlist();
+                                  }, settings: RouteSettings(name: 'album', arguments: album),
+                                ),
+                              );
+                            },
                             child: Icon(CupertinoIcons.music_note_list, color: Colors.white.withOpacity(0.6), size: 30.r),
                           ),
                         ],
