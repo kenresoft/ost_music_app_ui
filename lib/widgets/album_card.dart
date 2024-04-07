@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ost_music_app_ui/routes/now_playing.dart';
 
 import '../data/constants/constants.dart';
+import '../main.dart';
 import '../utils/utils.dart';
 
 class AlbumCard extends StatelessWidget {
