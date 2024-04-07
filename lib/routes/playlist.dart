@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ost_music_app_ui/data/constants/constants.dart';
+import 'package:ost_music_app_ui/routes/now_playing.dart';
 
 import '../data/models/album.dart';
 import '../main.dart';
@@ -26,7 +27,8 @@ class _PlaylistState extends ConsumerState<Playlist> {
 
   @override
   void didChangeDependencies() {
-    album = GoRouterState.of(context).extra as Album;
+    // album = GoRouterState.of(context).extra as Album;
+    album = ModalRoute.of(context)!.settings.arguments as Album;
     imageProvider = ExactAssetImage(album.image!);
     precacheImage(imageProvider, context);
     super.didChangeDependencies();
@@ -131,6 +133,14 @@ class _PlaylistState extends ConsumerState<Playlist> {
                           return ListTile(
                             onTap: () {
                               replace(context, Constants.nowPlaying, Constants.albumList[index]);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return const NowPlaying();
+                                  }, settings: RouteSettings(name: 'album', arguments: Constants.albumList[index]),
+                                ),
+                              );
                               ref.watch(currentlyPlaying.notifier).current(Constants.albumList[index]);
                             },
                             minVerticalPadding: 1,
