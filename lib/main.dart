@@ -128,7 +128,7 @@ FutureOr appCallback(void value) {
   runApp(
     ProviderScope(
       child: ScreenUtilInit(
-        designSize: const Size(448, 998),
+        designSize: const Size(360, 820),
         splitScreenMode: true,
         minTextAdapt: true,
         child: MyApp(),
