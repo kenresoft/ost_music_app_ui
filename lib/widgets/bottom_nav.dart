@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ost_music_app_ui/data/models/album.dart';
+import 'package:ost_music_app_ui/routes/now_playing.dart';
 
 import '../data/constants/constants.dart';
 import '../main.dart';
@@ -90,7 +91,17 @@ void buildNavSwitch(int index, BuildContext context, WidgetRef ref) {
       break;
     case 2:
       if (cacheTabIndex != 2) {
-        currentSong(ref).title == null ? null : launchReplace(context, Constants.nowPlaying, currentSong(ref));
+        currentSong(ref).title == null
+            ? null
+            : Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const NowPlaying();
+                  },
+                  settings: RouteSettings(name: 'album', arguments: currentSong(ref)),
+                ),
+              ); /*launchReplace(context, Constants.nowPlaying, currentSong(ref))*/
         ref.watch(tabProvider.notifier).setTab = index;
         //ref.watch(launchProvider.notifier).launch(true);
       }
